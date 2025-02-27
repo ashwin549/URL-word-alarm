@@ -1,5 +1,4 @@
-// background.js
-// Keep service worker alive
+
 chrome.alarms.create('keep-alive', { periodInMinutes: 1 });
 chrome.alarms.onAlarm.addListener(() => {});
 
@@ -36,7 +35,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
               }
             });
 
-            // Play alarm sound using offscreen document
+            // Play alarm sound 
             createSoundHtml();
 
             console.log('Trigger word detected:', word);
