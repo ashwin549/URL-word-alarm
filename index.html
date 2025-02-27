@@ -1,19 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Word Alarm</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h3 {
+      color: #333;
+    }
+    #triggerWords {
+      width: 80%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    #saveBtn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 80%;
+    }
+    #saveBtn:hover {
+      background-color: #45a049;
+    }
+    #currentWords {
+      margin-top: 20px;
+      width: 80%;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #f9f9f9;
+      margin: 5px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+  </style>
 </head>
 <body>
-  <h1>Set Trigger Words</h1>
-  <form id="trigger-form">
-    <label for="trigger-words">Enter words (comma-separated):</label><br>
-    <input type="text" id="trigger-words" name="trigger-words" placeholder="e.g., coursera, learn"><br><br>
-    <button type="submit">Save</button>
-  </form>
-
-  <h2>Current Trigger Words:</h2>
-  <div id="current-words"></div>
-
+  <h3>Set Trigger Words</h3>
+  <input type="text" id="triggerWords" placeholder="example, test">
+  <button id="saveBtn">Save</button>
+  <div id="currentWords">
+    <h4>Current Trigger Words:</h4>
+    <ul id="wordList"></ul>
+  </div>
   <script src="index.js"></script>
 </body>
 </html>

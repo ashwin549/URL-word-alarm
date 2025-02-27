@@ -1,21 +1,29 @@
-const form = document.getElementById('trigger-form');
-const input = document.getElementById('trigger-words');
-const currentWordsDiv = document.getElementById('current-words');
+document.addEventListener('DOMContentLoaded', () => {
+  const triggerWordsInput = document.getElementById('triggerWords');
+  const saveBtn = document.getElementById('saveBtn');
+  const wordList = document.getElementById('wordList');
 
-// Load current trigger words on popup open
-chrome.storage.local.get(['triggerWords'], (result) => {
-  const words = result.triggerWords || [];
-  currentWordsDiv.textContent = words.join(', ') || 'No trigger words set.';
-});
+  // Load and display current trigger words
+  chrome.storage.local.get(['triggerWords'], (result) => {
+    const triggerWords = result.triggerWords || [];
+    triggerWords.forEach(word => {
+      const li = document.createElement('li');
+      li.textContent = word;
+      wordList.appendChild(li);
+    });
+  });
 
-// Save new trigger words
-form.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const words = input.value.split(',').map(word => word.trim()).filter(Boolean);
-  
-  chrome.storage.local.set({ triggerWords: words }, () => {
-    alert('Trigger words saved!');
-    currentWordsDiv.textContent = words.join(', ') || 'No trigger words set.';
-    input.value = '';
+  // Save new trigger words
+  saveBtn.addEventListener('click', () => {
+    const words = triggerWordsInput.value.split(',').map(word => word.trim()).filter(word => word);
+    chrome.storage.local.set({ triggerWords: words }, () => {
+      wordList.innerHTML = '';
+      words.forEach(word => {
+        const li = document.createElement('li');
+        li.textContent = word;
+        wordList.appendChild(li);
+      });
+      triggerWordsInput.value = '';
+    });
   });
 });
