@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "URL Word Alarm",
+  "version": "1.0",
+  "description": "Set trigger words to ring an alarm when the URL contains them.",
+  "permissions": ["alarms", "storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icon.png"
+    }
+  }
+}
