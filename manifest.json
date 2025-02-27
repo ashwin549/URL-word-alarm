@@ -3,7 +3,7 @@
   "version": "1.0",
   "description": "Triggers alarm when URL contains specified words",
   "manifest_version": 3,
-  "permissions": ["alarms", "storage", "tabs", "notifications"],
+  "permissions": ["alarms", "storage", "tabs", "notifications","scripting"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"

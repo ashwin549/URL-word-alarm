@@ -27,9 +27,11 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
               }
             });
 
-            // Play alarm sound
-            const audio = new Audio(chrome.runtime.getURL('buzzer.mp3'));
-            audio.play();
+            // Inject content script to play alarm sound
+            chrome.scripting.executeScript({
+              target: { tabId: tabId },
+              files: ['playSound.js']
+            });
 
             console.log('Trigger word detected:', word);
           } catch (error) {
