@@ -2,14 +2,72 @@
 <html>
 <head>
   <title>Set Trigger Words</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+    }
+    .container {
+      width: 300px; /* Reduced width to 50% of the original 600px */
+      padding: 10px; /* Reduced padding to 50% of the original 20px */
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      max-height: 80vh; /* Set maximum height to 50% of the viewport height */
+      overflow-y: auto; /* Add scroll if content overflows */
+    }
+    h3 {
+      color: #333;
+      text-align: center;
+    }
+    #triggerWords {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    #saveBtn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    #saveBtn:hover {
+      background-color: #45a049;
+    }
+    #currentWords {
+      margin-top: 20px;
+      width: 100%;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      background: #f9f9f9;
+      margin: 5px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 <body>
-  <h3>Set Trigger Words</h3>
-  <input type="text" id="triggerWords" placeholder="example, test">
-  <button id="saveBtn">Save</button>
-  <div id="currentWords">
-    <h4>Current Trigger Words:</h4>
-    <ul id="wordList"></ul>
+  <div class="container">
+    <h3>Set Trigger Words</h3>
+    <input type="text" id="triggerWords" placeholder="example, test">
+    <button id="saveBtn">Save</button>
+    <div id="currentWords">
+      <h4>Current Trigger Words:</h4>
+      <ul id="wordList"></ul>
+    </div>
   </div>
   <script src="index.js"></script>
 </body>
