@@ -3,6 +3,15 @@
 chrome.alarms.create('keep-alive', { periodInMinutes: 1 });
 chrome.alarms.onAlarm.addListener(() => {});
 
+// Function to create offscreen document for audio playback
+function createSoundHtml() {
+  chrome.offscreen.createDocument({
+    url: chrome.runtime.getURL('audio.html'),
+    reasons: ['AUDIO_PLAYBACK'],
+    justification: 'notification',
+  });
+}
+
 // URL monitoring with trigger word check
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (tab.status === 'complete' && tab.url) {
@@ -27,11 +36,8 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
               }
             });
 
-            // Inject content script to play alarm sound
-            chrome.scripting.executeScript({
-              target: { tabId: tabId },
-              files: ['playSound.js']
-            });
+            // Play alarm sound using offscreen document
+            createSoundHtml();
 
             console.log('Trigger word detected:', word);
           } catch (error) {

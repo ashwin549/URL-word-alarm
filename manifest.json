@@ -3,7 +3,7 @@
   "version": "1.0",
   "description": "Triggers alarm when URL contains specified words",
   "manifest_version": 3,
-  "permissions": ["alarms", "storage", "tabs", "notifications","scripting"],
+  "permissions": ["alarms", "storage", "tabs", "notifications","scripting","offscreen"],
   "host_permissions": ["<all_urls>"],
   "background": {
     "service_worker": "background.js"
@@ -13,5 +13,9 @@
   },
   "icons": {
     "48": "icon.png"
-  }
+  },
+"web_accessible_resources": [{
+  "resources": ["buzzer.mp3"],
+  "matches": ["<all_urls>"]
+}]
 }
